@@ -36,6 +36,6 @@ for i in range(len(data)):
 for i in range(len(data)):
     # invoke the start time to measure the performance
     start_time = time.time()
-    # Calling selection_sort for each data set
+    # Calling bubble_sort for each data set
     BubbleSort.bubble_sort(data["data"+str(i+1)])
     print("Bubble time for data" + str(i+1) + " = "+ str(time.time() - start_time))
