@@ -17,7 +17,7 @@ data = {
 #-----------------------------------------------------------------------------#
 #                        INSERTION  SORTING                                  
 #-----------------------------------------------------------------------------#
-def insertion_sort(data):
+def insertion_sort_iterative(data):
     # check is the data size is 1 then return true
     if len(data) <= 1:
         return
@@ -42,5 +42,5 @@ if __name__ == "__main__":
     # Call the dataset to test Insertion sort
     for i in range(len(data)):
         start_time = time.time()
-        insertion_sort(data["data"+str(i+1)])
+        insertion_sort_iterative(data["data"+str(i+1)])
         print("Insertion time for data" + str(i+1) + " = "+ str(time.time() - start_time))
