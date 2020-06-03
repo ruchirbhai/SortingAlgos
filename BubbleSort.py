@@ -9,6 +9,8 @@ data = {
     "data4" : [1,1,1,1,1,1],        # every element is the same
     "data5" : [0,22,100,1,2,3,4,5,6,7,7,8,89,9,0,-1],   #negative + zero
     "data6" : [5,4,3,2,1],      #reverse sorted array
+    "data7" : [1],      # data with only 1 value
+    "data8" : [],       # data with  NULL value
 }
 
 
