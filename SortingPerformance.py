@@ -6,7 +6,11 @@ import time
 #Brute force sorting
 import BubbleSort
 import SelectionSort
+# decrease and conq
 import InsertionSort
+# divide and conq
+import MergeSort
+
 
 # we have a data set starting with the very basic happy path to complex
 data = {
@@ -47,3 +51,15 @@ for i in range(len(data)):
     # Calling bubble_sort for each data set
     InsertionSort.insertion_sort_iterative(data["data"+str(i+1)])
     print("Insertion time for data" + str(i+1) + " = "+ str(time.time() - start_time))
+
+#-----------------------------------------------------------------------------#
+#                        DIVIDE AND CONQ SORTING                         #
+#-----------------------------------------------------------------------------#
+
+#                        MERGE SORTING              
+for i in range(len(data)):
+    # invoke the start time to measure the performance
+    start_time = time.time()
+    # Calling bubble_sort for each data set
+    MergeSort.merge_sort(data["data"+str(i+1)])
+    print("Merge time for data" + str(i+1) + " = "+ str(time.time() - start_time))
