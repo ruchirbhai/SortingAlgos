@@ -22,8 +22,12 @@
 # arr is not necessarily sorted.
 
 #try 1 brute Force method
-data = [-6, -4, 1, 3, 9, 10]
-def findZeroSum(arr):
+# data = [-6, -4, 1, 3, 9, 10]
+# data = [5,-2,2,0,-1,1]
+# data = [6, 0, 0, 0, 0, 0, 0]
+data = [6,10,3,-4,1,-6,9]
+
+def findZeroSum_bruteforce(arr):
     arr.sort()
     triplet_set = set()
     # print(arr)
@@ -43,4 +47,33 @@ def findZeroSum(arr):
         print(triplet)
     return triplet_set
 
+def findZeroSum(arr):
+    arr.sort()
+    triplet = []
+    length = len(arr)
+    # print(arr)
+    for num1 in range(length-2):
+        if (num1 == 0 or arr[num1] != arr[num1-1]) and arr[num1] <= 0:
+            left= num1 +1 #left pointer
+            right = length - 1 # right pointer
+            while left < right:
+                sum = arr[left] + arr[right] + arr[num1] 
+                if sum < 0:
+                    left += 1
+                elif sum > 0:
+                    right -= 1
+                elif sum == 0:
+                    triplet.append(f"{arr[num1]},{arr[left]},{arr[right]}")
+                    left += 1
+                    right -= 1
+                    while left < right and arr[left] == arr[left-1]:
+                        left += 1
+                    while left < right and arr[right] == arr[right+1]:
+                        right -= 1
+
+    for data in triplet:
+        print(data)
+    return triplet
+
+# findZeroSum_bruteforce(data)
 findZeroSum(data)
