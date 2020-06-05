@@ -11,6 +11,7 @@ data = {
     "data6" : [5,4,3,2,1],      #reverse sorted array
     "data7" : [1],      # data with only 1 value
     "data8" : [],       # data with  NULL value
+    "data9" : [1,1]     #failed on IK for some reason
 }
 
 
@@ -19,12 +20,12 @@ data = {
 #-----------------------------------------------------------------------------#
 def merge_sort(data):
     #checking if length is 1 then dont proceed ahead
-    length = len(data)
-    if length <= 1:
-        return
-    mid = int(len(data)/2)
+    # length = len(data)
+    # the checlk for length <=1 causes timeouts for some reason on bug datasets
+    # if length <= 1:
+    #     return
     # call the mergesort_helper for the entire array
-    mergesort_helper(data,0,length-1)
+    mergesort_helper(data,0,len(data)-1)
 
     return data
 
