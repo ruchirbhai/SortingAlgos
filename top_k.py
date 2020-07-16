@@ -8,39 +8,40 @@ data = {
     "data3" : [5,4,1,3,2,2],        # repeated values
     "data4" : [1,1,1,1,1,1],        # every element is the same
     "data5" : [0,22,100,1,2,3,4,5,6,7,7,8,89,9,0,-1],   #negative + zero
-    "data6" : [5,4,3,2,1,1,1],      #reverse sorted array
+    "data6" : [5,4,3,2,1],      #reverse sorted array
     "data7" : [1],      # data with only 1 value
     "data8" : [],       # data with  NULL value
+    "data9" : [4,2,1,6,2,10,4,3,10,6,5,6,7,2,10,10,4,6,5,8],
 }
 
 
 #-----------------------------------------------------------------------------#
 #                        INSERTION  SORTING                                  
 #-----------------------------------------------------------------------------#
-def insertion_sort_iterative(data):
-    # check is the data size is 1 then return true
-    if len(data) <= 1:
-        return
+def top_k(arr, k):
+    result = []
+    # for left_ptr in range(len(arr)-1):
+    #     # result_dict[arr[left_ptr]] = 1
+    #     curr_ptr = left_ptr + 1
+    #     # go backwards in the array 
+    #     for curr_ptr in range(curr_ptr,0,-1):
+    #         # if arr[curr_ptr] > arr[curr_ptr - 1] and arr[curr_ptr] not in arr[:curr_ptr]:
+    #         if arr[curr_ptr] > arr[curr_ptr - 1]:
+    #             arr[curr_ptr], arr[curr_ptr - 1] = arr[curr_ptr - 1], arr[curr_ptr]
     
-    # for a dataset greater than 1 go from 2 to end of array
-    for i in range(0, (len(data) -1)):
-        # get the new element so we can now insert this new element at the right place in the array
-        new_element = data[i]
-        # pointing j to the last value in the sorted part of the array, the left side 
-        j = i + 1
-
-        # Go from right to left as j keeps increasing from 1 to len(data) -1
-        # Use the same logic as bubble sort here
-        for j in range(j,0,-1):
-            if data[j] < data[j-1]:
-                data[j],data[j-1] = data[j-1],data[j]
-        print(data)
-    # print(data)
+    arr.sort(reverse = True)
+    ptr = 0
+    while len(result) < k and ptr < len(arr):
+        if(ptr == 0 or arr[ptr] != arr[ptr-1]):
+            result.append(arr[ptr])
+        ptr += 1
+    return result
 
 
 if __name__ == "__main__":
     # Call the dataset to test Insertion sort
+    k = 4
     for i in range(len(data)):
         start_time = time.time()
-        insertion_sort_iterative(data["data"+str(i+1)])
+        print(top_k(data["data"+str(i+1)],k))
         print("Insertion time for data" + str(i+1) + " = "+ str(time.time() - start_time))
